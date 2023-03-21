@@ -28,16 +28,8 @@
   <body class="d-flex flex-column vh-100">
     <%- include("../partials/navbar")%>
 
-    <!-- notice that we are using - here, it Outputs the unescaped value into the template  -->
-
     <main class="container mt-5 mb-5">
-      <!-- displaying success (if it exists) from res.locals.success which was set using flash message if something was successful -->
-      <!-- Notice that flash message shows up only once -->
-      <!-- Here we are displaying flash message with some bootstrap styling using partials -->
-      <%- include("../partials/flash")%>
-
-      <!-- rest of the body: -->
-      <%- body%>
+      <%- include("../partials/flash")%> <%- body%>
     </main>
 
     <%- include("../partials/footer")%>
