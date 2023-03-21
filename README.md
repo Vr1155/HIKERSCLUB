@@ -1,1 +1,1 @@
-# yelp-camp-practice
+# HikersClub project
