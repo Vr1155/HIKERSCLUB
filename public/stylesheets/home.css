@@ -17,12 +17,10 @@ body {
   font-weight: 700;
   color: rgba(255,255,255,0.5);
   margin-left: 1rem;
-  /* initially nav-link border will be transparent but will reveal when hovered on: */
   border-bottom: 0.25rem solid transparent;
 }
 
 .nav-link:hover{
-  /* overwrite bootstrap to make color on hover to be white */
   color: rgba(255,255,255, 0.5);
   border-bottom-color:rgba(255,255,255,0.5) ;
 }
