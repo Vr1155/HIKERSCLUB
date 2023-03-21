@@ -17,7 +17,6 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 const ejsMate = require("ejs-mate");
 const session = require("express-session");
-
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 
@@ -27,6 +26,7 @@ const localStrategy = require("passport-local");
 const ExpressError = require("./utilities/ExpressError");
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+// const dbUrl = "mongodb://localhost:27017/yelp-camp";
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
@@ -117,14 +117,15 @@ app.use(
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
-  secret: process.env.SECRET || "thisshouldbeabettersecret",
-  touchAfter: 24 * 60 * 60
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: "thisshouldbeabettersecret"
+  }
 });
 
 const sessionConfig = {
   store,
   name: "session",
-
   secret: "thisshouldbeabettersecret",
   resave: false,
   saveUninitialized: false,
