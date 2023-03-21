@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate')%>
+
+<div id="map" style="width: 100%; height: 500px"></div>
+
+<h1>All Destinations</h1>
+<% for (let campground of campgrounds){%>
+<!-- using bootstrap card! to show each campground's brief details -->
+
+<!-- Think of infinite scrolling and best way to store and deliver images later. -->
+
+<!-- for now understand how these bootstrap classes work! -->
+
+<div class="card mb-3 mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- if any image exists, display the latest image: -->
+      <% if(campground.images.length) { %>
+      <img
+        class="rounded w-auto img-fluid d-flex justify-content-center align-items-center h-100"
+        alt=""
+        src="<%=campground.images[campground.images.length-1].url%>"
+        crossorigin
+      />
+      <% } else { %>
+      <!-- else display a default image: -->
+      <img
+        src="https://res.cloudinary.com/dp5xnsncr/image/upload/v1676701927/YelpCamp/bzywbn9fhegtiq27xivr.jpg"
+        alt="default_image"
+        crossorigin
+      />
+      <% } %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= campground.title %></h5>
+        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= campground.location%></small>
+        </p>
+        <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>"
+          >View <%=campground.title%></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<% }%>
+
+<script>
+  // getting mapbox access token from .env file:
+  const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+  // passing all campgrounds data,
+  // Notice that mapbox expects a obj with key features and value as array of data points.
+  const campgrounds = {features: <%- JSON.stringify(campgrounds) %>};
+</script>
+
+<!-- authenticate access token for mapbox-gl using this script: -->
+
+<script src="/javascripts/clusterMap.js"></script>

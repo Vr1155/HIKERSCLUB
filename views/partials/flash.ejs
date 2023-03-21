@@ -1,0 +1,23 @@
+<!-- Have to use success.length since success can be an empty array,
+   (if no flash messages present)
+    and empty arrays are truthy -->
+
+<% if(success && success.length) {%>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= success %>
+  <!-- Notice the changes in bootstrap 4 and 5 for this type of dismissable alerts
+  make sure you refer to the right docs, according to the version you have installed. -->
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </button>
+</div>
+<% } %>
+
+
+
+<% if(error && error.length) {%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </button>
+</div>
+<% } %>

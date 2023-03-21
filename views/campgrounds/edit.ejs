@@ -1,0 +1,133 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+  <h1 class="text-center">Edit Destination</h1>
+  <div class="col-md-6 offset-md-3">
+    <!-- _method=PUT is for method override! -->
+    <!-- This form will also accept multiple images
+    hence, we need enctype="multipart/form-data"
+    -->
+    <form
+      action="/campgrounds/<%=campground.id%>/edit?_method=PUT"
+      method="POST"
+      class="client-side-form-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <!-- name="campground[key]" allows us to store user's response in an object and send it to server as post -->
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="campground[title]"
+          value="<%=campground.title %>"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="campground[location]"
+          value="<%=campground.location %>"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Entry ticket price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            placeholder="0.00"
+            aria-label="price"
+            aria-describedby="price-label"
+            name="campground[price]"
+            value="<%=campground.price %>"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="campground[description]"
+          required
+        >
+<%= campground.description%></textarea
+        >
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="image">Add more image(s)</label>
+
+        <!-- for mutiple image upload using multer: -->
+        <input
+          type="file"
+          class="form-control"
+          name="image"
+          id="image"
+          multiple
+        />
+        <!-- make sure you get mutiple spelling right XD -->
+
+        <!-- for single image url upload: -->
+        <!-- <input
+          class="form-control"
+          type="text"
+          id="image"
+          name="campground[image]"
+          value="<%=campground.image %>"
+          required
+        /> -->
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <!-- show checkboxes to delete some of existing images: -->
+      <div class="mb-3">
+        <!-- campground obj and its images are available, since its passed into render() -->
+        <% campground.images.forEach(function(img, i) { %>
+        <img
+          class="img-thumbnail"
+          src="<%=img.thumbnail%>"
+          alt="thumbnail"
+          crossorigin
+        />
+        <div class="form-check-inline">
+          <!-- if checkbox is checked, we will send filename of that image to server for deletion from cloud: -->
+          <!--
+             note that, deleteImages array was empty by default, but when we check the checkboxes,
+             it gets filled by values from value attributes of checkboxes (i.e. img.filename)
+             These filenames are sent to backend for deletion.
+          -->
+          <input
+            type="checkbox"
+            id="image-<%=i%>"
+            name="deleteImages[]"
+            value="<%=img.filename%>"
+          />
+        </div>
+        <label for="<%=img.url%>"> Delete?</label>
+        <% }) %>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-info">Update Destination</button>
+      </div>
+    </form>
+    <a href="/campgrounds/<%= campground._id%>">Back To Campground</a>
+  </div>
+</div>
