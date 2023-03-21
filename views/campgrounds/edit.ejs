@@ -2,10 +2,6 @@
 <div class="row">
   <h1 class="text-center">Edit Destination</h1>
   <div class="col-md-6 offset-md-3">
-    <!-- _method=PUT is for method override! -->
-    <!-- This form will also accept multiple images
-    hence, we need enctype="multipart/form-data"
-    -->
     <form
       action="/campgrounds/<%=campground.id%>/edit?_method=PUT"
       method="POST"
@@ -13,7 +9,6 @@
       novalidate
       enctype="multipart/form-data"
     >
-      <!-- name="campground[key]" allows us to store user's response in an object and send it to server as post -->
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
@@ -74,7 +69,6 @@
       <div class="mb-3">
         <label class="form-label" for="image">Add more image(s)</label>
 
-        <!-- for mutiple image upload using multer: -->
         <input
           type="file"
           class="form-control"
@@ -82,23 +76,11 @@
           id="image"
           multiple
         />
-        <!-- make sure you get mutiple spelling right XD -->
 
-        <!-- for single image url upload: -->
-        <!-- <input
-          class="form-control"
-          type="text"
-          id="image"
-          name="campground[image]"
-          value="<%=campground.image %>"
-          required
-        /> -->
         <div class="valid-feedback">Looks good!</div>
       </div>
 
-      <!-- show checkboxes to delete some of existing images: -->
       <div class="mb-3">
-        <!-- campground obj and its images are available, since its passed into render() -->
         <% campground.images.forEach(function(img, i) { %>
         <img
           class="img-thumbnail"
@@ -107,12 +89,6 @@
           crossorigin
         />
         <div class="form-check-inline">
-          <!-- if checkbox is checked, we will send filename of that image to server for deletion from cloud: -->
-          <!--
-             note that, deleteImages array was empty by default, but when we check the checkboxes,
-             it gets filled by values from value attributes of checkboxes (i.e. img.filename)
-             These filenames are sent to backend for deletion.
-          -->
           <input
             type="checkbox"
             id="image-<%=i%>"

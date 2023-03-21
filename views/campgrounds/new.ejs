@@ -1,21 +1,8 @@
 <% layout('layouts/boilerplate')%>
 
-<!-- styling done with bootstrap classes! -->
-
 <div class="row">
   <h1 class="text-center">New Destination</h1>
   <div class="col-md-6 offset-md-3">
-    <!-- client side validations using bootstrap:
-    prevent default behaviour of html forms using novalidate boolean attribute
-    and adding a class "client-side-form-validation" which helps bootstrap identify the forms
-    that need to be validated in the script tag in boilerplate,
-    (you can name it anything as long as you change the class name in script too).
-    then, add required in all input fields
-    then add javascript in the script tag boilerplate file.
-    -->
-    <!--
-      Notice that enctype="multipart/form-data" is for supporting file uploads through HTML forms.
-     -->
     <form
       action="/campgrounds"
       method="POST"
@@ -23,10 +10,7 @@
       enctype="multipart/form-data"
       novalidate
     >
-      <!-- name="campground[key]" allows us to store user's response in an object and send it to server as post -->
-
       <div class="mb-3">
-        <!-- for attribute in label tag should be id of input box -->
         <label class="form-label" for="title">Title</label>
         <input
           class="form-control"
@@ -81,21 +65,6 @@
       </div>
 
       <div class="mb-3">
-        <!-- basic text input for image urls: -->
-        <!--
-          <label class="form-label" for="image">Image Url</label>
-          <input
-          class="form-control"
-          type="text"
-          id="image"
-          name="campground[image]"
-          required
-        /> -->
-        <!-- input tag which supports file uploads
-            (notice "multiple" to specify multiple file uploads):
-         -->
-
-        <!-- bootstrap 5 default file input box which shows file name only in single and only file count when multiple: -->
         <label for="image" class="form-label">Upload Image(s):</label>
         <input
           class="form-control"
@@ -109,7 +78,6 @@
       </div>
 
       <div class="mb-3">
-        <!-- default button type is submit for most browser, you can also create a reset button if you want! -->
         <button class="btn btn-success">Add Destination</button>
       </div>
     </form>
