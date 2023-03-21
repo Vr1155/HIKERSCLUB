@@ -86,8 +86,6 @@ module.exports.modifyCampground = async (req, res, next) => {
     await campground.updateOne({
       $pull: { images: { filename: { $in: req.body.deleteImages } } }
     });
-
-    console.log(campground);
   }
 
   campground.images = req.flash(
