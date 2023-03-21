@@ -36,12 +36,12 @@ const seedDB = async () => {
         "Asymmetrical pabst irony whatever, iPhone kale chips wolf raw denim flannel tilde kinfolk Brooklyn listicle. Dreamcatcher cold-pressed cardigan fingerstache. VHS biodiesel hashtag, hot chicken subway tile shoreditch vexillologist listicle franzen 90's squid +1 af. Seitan chartreuse fashion axe, gatekeep pok pok messenger bag deep v. Retro trust fund typewriter fixie, bespoke four dollar toast bushwick vegan roof party succulents etsy echo park tumblr lo-fi cliche. Pour-over art party photo booth +1 leggings, yuccie etsy la croix fashion axe vice tilde. Slow-carb helvetica salvia pork belly live-edge locavore vibecession semiotics jean shorts cardigan you probably haven't heard of them street art.",
       images: [
         {
-          url: "https://res.cloudinary.com/dp5xnsncr/image/upload/v1676701927/YelpCamp/a3guharenlkzk1qtshgo.jpg",
-          filename: "YelpCamp/a3guharenlkzk1qtshgo"
+          url: "https://res.cloudinary.com/dp5xnsncr/image/upload/v1679402405/HikersClub/a3guharenlkzk1qtshgo_djiqqi.jpg",
+          filename: "HikersClub/a3guharenlkzk1qtshgo_djiqqi"
         },
         {
-          url: "https://res.cloudinary.com/dp5xnsncr/image/upload/v1676701927/YelpCamp/bzywbn9fhegtiq27xivr.jpg",
-          filename: "YelpCamp/bzywbn9fhegtiq27xivr"
+          url: "https://res.cloudinary.com/dp5xnsncr/image/upload/v1679402378/HikersClub/bzywbn9fhegtiq27xivr_zetcky.jpg",
+          filename: "HikersClub/bzywbn9fhegtiq27xivr_zetcky"
         }
       ]
     });

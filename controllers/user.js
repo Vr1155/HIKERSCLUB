@@ -17,7 +17,7 @@ module.exports.register = async (req, res, next) => {
       if (err) {
         return next(err);
       }
-      req.flash("success", "Registeration Successful! Welcome to YelpCamp!");
+      req.flash("success", "Registeration Successful! Welcome to HikersClub!");
       res.redirect("/campgrounds");
     });
   } catch (e) {
